@@ -1,0 +1,30 @@
+{
+  "type" : "record",
+  "name" : "movie_list",
+  "namespace" : "hindi.movie",
+  "fields" : [ {
+    "name" : "movie",
+    "type" : "string"
+  }, {
+    "name" : "genre",
+    "type" : {
+      "type" : "array",
+      "items" : "string"
+    },
+    "default" : [ ]
+  }, {
+    "name" : "director",
+    "type" : {
+      "type" : "array",
+      "items" : "string"
+    },
+    "default" : [ ]
+  }, {
+    "name" : "actor",
+    "type" : {
+      "type" : "array",
+      "items" : "string"
+    },
+    "default" : [ ]
+  } ]
+}

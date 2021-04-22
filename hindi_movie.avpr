@@ -1,0 +1,34 @@
+{
+  "protocol" : "movieprotocol",
+  "namespace" : "hindi.movie",
+  "types" : [ {
+    "type" : "record",
+    "name" : "movie_list",
+    "fields" : [ {
+      "name" : "movie",
+      "type" : "string"
+    }, {
+      "name" : "genre",
+      "type" : {
+        "type" : "array",
+        "items" : "string"
+      },
+      "default" : [ ]
+    }, {
+      "name" : "director",
+      "type" : {
+        "type" : "array",
+        "items" : "string"
+      },
+      "default" : [ ]
+    }, {
+      "name" : "actor",
+      "type" : {
+        "type" : "array",
+        "items" : "string"
+      },
+      "default" : [ ]
+    } ]
+  } ],
+  "messages" : { }
+}

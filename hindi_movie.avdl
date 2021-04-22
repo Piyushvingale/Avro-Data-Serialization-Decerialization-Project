@@ -1,0 +1,11 @@
+@namespace("hindi.movie")
+protocol movieprotocol {
+
+  record movie_list {
+    string movie;
+    array<string> genre = [];
+    array<string> director = [];
+    array<string> actor = [];
+  }
+
+}
