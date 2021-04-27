@@ -1,26 +1,28 @@
-from output.schema_classes import SchemaClasses
+import csv
 from avro import datafile, io
 from output import SpecificDatumReader as MovieReader
-import avro.schema, csv
+import avro.schema
 from avro.datafile import DataFileWriter
 from avro.io import DatumWriter
 
-movie_list = SchemaClasses.hindi.movie.movie_listClass
-schema = avro.schema.parse(open("target/schema/movie_list.avsc", "rb").read())
+from output.hindi.movie import Movie,MovieDb
+from output.schema_classes import SchemaClasses
 
-movie = movie_list()
+#movie_list = SchemaClasses.hindi.movie.movie_listClass
+schema = avro.schema.parse(open("target/schema/MovieDb.avsc", "rb").read())
+
+movie_db = MovieDb()
 object_list = []
-
 with open('hindi-movies-list.csv', newline='') as csvfile:
     for row in csv.DictReader(csvfile):
-        movie = movie_list()
-        movie.movie = row["Movie"]
-        movie.genre = row["Genre"]
-        movie.director = row["Director"]
-        movie.actor = row["Actors"]
-        object_list.append(movie)
+        movie = Movie()
+        movie.name = row["Movie"]
+        movie.genre = row["Genre"].split(",")
+        movie.director = row["Director"].split(",")
+        movie.actor = row["Actors"].split(",")
+        movie_db.movies.append(movie)
+        #break
 
 writer = DataFileWriter(open('hindi_movies.avro', "wb"), DatumWriter(), schema)
-for i in object_list:
-    writer.append({"movie": i.movie, "genre": i.genre.split(','), "director": i.director.split(','), "actor": i.actor.split(',')})
+writer.append(movie_db)
 writer.close()
