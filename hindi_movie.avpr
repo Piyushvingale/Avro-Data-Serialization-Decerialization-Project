@@ -3,9 +3,9 @@
   "namespace" : "hindi.movie",
   "types" : [ {
     "type" : "record",
-    "name" : "movie_list",
+    "name" : "Movie",
     "fields" : [ {
-      "name" : "movie",
+      "name" : "name",
       "type" : "string"
     }, {
       "name" : "genre",
@@ -26,6 +26,17 @@
       "type" : {
         "type" : "array",
         "items" : "string"
+      },
+      "default" : [ ]
+    } ]
+  }, {
+    "type" : "record",
+    "name" : "MovieDb",
+    "fields" : [ {
+      "name" : "movies",
+      "type" : {
+        "type" : "array",
+        "items" : "Movie"
       },
       "default" : [ ]
     } ]
