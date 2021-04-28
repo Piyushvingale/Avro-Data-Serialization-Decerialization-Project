@@ -1,0 +1,21 @@
+@namespace("hindi.movie")
+protocol movieprotocol {
+
+  /**
+  Creating Movie protocol for single movie record
+  */
+  record Movie {
+    union { null, string} name = null;
+    union { null, array<string>} genre = [];
+    union { null, array<string>} director = [];
+    union { null, array<string>} actor = [];
+  }
+
+  /**
+  Creating MovieDb protocol for array of movie record
+  */
+  record MovieDb{
+    array<Movie> movies = [];
+  }
+
+}
